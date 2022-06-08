@@ -89,7 +89,7 @@ class Usuario:
                 if cat.getId() == lis.getAssunto():
                   print("\t Assunto: ",cat.getNome())
         if tem == 0:
-            print("\t Nenhum Livro não encontrado")
+            print("\t Nenhum Livro não encontrado \n")
       
       elif opcao == '0':
         application.Home()
