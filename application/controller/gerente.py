@@ -1,7 +1,7 @@
 
 from datetime import date, datetime
 from statistics import mode
-import locale
+import locale,application
 
 try:
   locale.setlocale(locale.LC_TIME, locale.normalize('pt_BR.utf8'))
@@ -115,6 +115,6 @@ class Gerente:
                   print("\tAssunto: ",ass.getNome())
           
       elif opcao == '0':
-       break
+        application.Home()
       else:
         print("Opcao Invalida")

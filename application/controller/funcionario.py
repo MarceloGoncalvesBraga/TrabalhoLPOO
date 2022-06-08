@@ -1,10 +1,5 @@
 
-from datetime import datetime
-from statistics import mode
-from unittest import mock
-
-from click import DateTime
-from psycopg2 import Date
+from datetime import datetime,date
 from application.model.dao.livros_dao import LivrosDao
 from application.model.entity.Livros import Livros
 
@@ -22,7 +17,7 @@ from application.model.entity.Categoria import Categoria
 
 from application.model.dao.professor_dao import Professor_Dao
 from application.model.entity.professor import Professor
-
+import application
 class Funcionario:
 
   def Administrar():
@@ -113,7 +108,7 @@ class Funcionario:
           print("Cadastro Realizado")
       
       elif opcao == '0':
-        break
+        application.Home()
       else:
         print("Opcao Invalida")
 

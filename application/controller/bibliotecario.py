@@ -13,6 +13,7 @@ from application.model.entity.exemplar import Exemplar
 
 from application.model.dao.Categoria_dao import CategoriaDao
 from application.model.entity.Categoria import Categoria
+import application
 
 class Biblioteca():
 
@@ -113,11 +114,11 @@ class Biblioteca():
     
       elif opcao == '4':
             id = int(input("Digite um id \n"))
-
             for lis in listalivros:
               if lis.getId() == id:
                 listalivros.remove(lis) 
                 print("\t Realizado com Sucesso !")
+                
       elif opcao == '5':
         print("\tLista de Exemplares Cadastrados")
         for lis in listaexemplares:
@@ -182,7 +183,7 @@ class Biblioteca():
                 print("\t Realizado com Sucesso !")
  
       elif opcao == '0':
-         break
+        application.Home()
       else:
         print("Opcao Invalida")
  

@@ -1,10 +1,8 @@
 
-from ast import Break
-from tracemalloc import stop
 from application.model.dao.livros_dao import LivrosDao
 from application.model.dao.Categoria_dao import CategoriaDao
 from application.model.entity.Livros import Livros
-
+import application
 class Usuario:
   def consultarLivros():
     listalivros = LivrosDao.ListarLivros()
@@ -94,7 +92,7 @@ class Usuario:
             print("\t Nenhum Livro não encontrado")
       
       elif opcao == '0':
-         break
+        application.Home()
       else:
         print("Opcao Invalida")
       
