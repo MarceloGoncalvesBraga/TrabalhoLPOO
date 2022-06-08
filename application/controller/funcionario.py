@@ -1,5 +1,5 @@
 
-from datetime import datetime,date
+import datetime
 from application.model.dao.livros_dao import LivrosDao
 from application.model.entity.Livros import Livros
 
@@ -21,7 +21,7 @@ import application
 class Funcionario:
 
   def Administrar():
-    listamprestimos = EmprestimoDao.ListarEmprestimos()
+    listaemprestimos = EmprestimoDao.ListarEmprestimos()
     listaexemplares = ExemplarDao.ListarExemplares()
     listacategorias = CategoriaDao.ListarCategorias()
     listalivros = LivrosDao.ListarLivros()
@@ -53,13 +53,17 @@ class Funcionario:
 
       opcao = input("\t Digite uma opcao \t")
       if opcao == '1':
-        
         titulo = input("\t Titulo do Livro \t")
+  
         for lis in listalivros:
           if lis.getTitulo() == titulo:
               if lis.getStatus() == 1:
                 print("\t Livro Indisponivel \t ")
                 break
+              for listaemprestimo in listaemprestimos:
+                if lis.getId() == listaemprestimo.getId() and listaemprestimo.getDevolvido == 'n':
+                  print("\t Livro Indisponivel \t ")
+                  break 
               print("\tTitulo:  ",lis.getTitulo())
               print("\tN° Isbn: ",lis.getIsbn())
               print("\tAutor: ",  lis.getAutor())
@@ -68,23 +72,47 @@ class Funcionario:
               for ass in listacategorias:
                 if ass.getId() == lis.getAssunto():
                   print("\tAssunto: ",ass.getNome())
+                  
               lis.setStatus(1)
-              idusuario = input("\t Digite seu id de usuario \t")
-              datadevo = input("\t Digite a data de devolucao \t")
+              ide = int(input("\t Digite id  \t"))
+              idliv = int(input("\t Digite id do Livro \t"))
+              idusuario = int(input("\t Digite seu id de usuario \t"))
+              datadevo = input("\t Digite a data de devolucao 00/00/0000 \t")
+              #for l in listaemprestimos:
+              #listaemprestimos.append(Emprestimo(id=ids, idLivro=lis.getId(),idUsuario=idusuario,datainit=dat, datadev=datadevo, devolvido='n',reservado='s', encerrado='n'))
+              #listaemprestimos.append((Emprestimo(id=5, idLivro=6, idUsuario=2, datainit='17/03/2022', datadev='25/07/2022', devolvido='n', reservado='s',encerrado='n')))
+              #listaemprestimos.append(Emprestimo(id=iduser, idLivro=idliv, idUsuario=2, datainit=dat, datadev='25/07/2022', devolvido='n', reservado='s',encerrado='n'))
+              listaemprestimos.append(Emprestimo(id=1, idLivro=idliv, idUsuario=idusuario, datainit='17/03/2022', datadev='25/07/2022', devolvido='n', reservado='s',encerrado='n'),
+)
 
-              #for l in listamprestimos:
-              listamprestimos.append((Emprestimo(id=lis.getId()+1000, idLivro=lis.getId(),idUsuario=idusuario,datainit=datetime, datadev=datadevo, devolvido='n',reservado='s', encerrado='n')))
-              print("\t Livro Reservado")
-     
-      elif opcao == '2':
-              for listamprestimo in listamprestimos:
+              print("\t ------------------------------")
+              print("\t\t Livro Reservado")
+              print("\t ------------------------------")
+              for listaemprestimo in listaemprestimos:
                 for lis in listalivros:
-                  if lis.getId() == listamprestimo.getId() and listamprestimo.getDevolvido() == 'n':
-                    print("\t Lista de Livros Emprestados ")
-
+                  if lis.getId() == listaemprestimo.getidLivro() and lis.getStatus() == 0 and listaemprestimo.getDevolvido() == 'n':
+                    print("\t--------------------------")
+                    print("\tId:      ",lis.getId())
                     print("\tTitulo:  ",lis.getTitulo())
                     print("\tN° Isbn: ",lis.getIsbn())
-                    print("\tAutor: ",  lis.getAutor())
+                    print("\tAutor:   ",  lis.getAutor())
+                    print("\tEditora: ",lis.getEditora())
+                    print("\tAno:     ",lis.getAno())
+                    for ass in listacategorias:
+                      if ass.getId() == lis.getAssunto():
+                        print("\tAssunto: ",ass.getNome())
+              break
+     
+      elif opcao == '2':
+              print("\t Lista de Livros Emprestados ")
+              for listaemprestimo in listaemprestimos:
+                for lis in listalivros:
+                  if lis.getId() == listaemprestimo.getidLivro() and lis.getStatus() == 0 and listaemprestimo.getDevolvido() == 'n':
+                    print("\t--------------------------")
+                    print("\tId:      ",lis.getId())
+                    print("\tTitulo:  ",lis.getTitulo())
+                    print("\tN° Isbn: ",lis.getIsbn())
+                    print("\tAutor:   ",  lis.getAutor())
                     print("\tEditora: ",lis.getEditora())
                     print("\tAno:     ",lis.getAno())
                     for ass in listacategorias:
@@ -93,33 +121,32 @@ class Funcionario:
       
       elif opcao == '3':
         
-        id = input("\t id da Reserva do Livro \t")
-        for lis in listamprestimos:
+        id = int(input("\t id da Reserva do Livro \t"))
+        for lis in listaemprestimos:
            if lis.getId() == id:
-              value = 's'
-              lis.setDevolvido(value)
+              lis.setDevolvido('s')
               print("\t Devolucao Feita \n")
-              break
+              
         
       elif opcao == '4':
         for lis in listausuarios:
           print("\t Nome:  ",lis.getNome())
           print("\tN° Matricula: ",lis.getMatricula())
           print('\t-------------------------------')
-
+          
       elif opcao == '5':
           id = input("\tdigite um id \t ")
           nome = input("\tdigite um Nome \t")
           matricula = input("\tdigite uma Matricula \t")
 
           listausuarios.append((Usuario(id=id, nome=nome, matricula=matricula)))
-          print("Cadastro Realizado \n")
-
+          print("\tCadastro Realizado \n")
+          
       elif opcao == '6': 
         for lis in listaprofessores:
           print("\t Nome:  ",lis.getNome())
           print("\tN° Matricula: ",lis.getMatricula())
-          print('-------------------------------')
+          print('\t-------------------------------')
 
       elif opcao == '7':
           id = input("\tdigite um id \t")
