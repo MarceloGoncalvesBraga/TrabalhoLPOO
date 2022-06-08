@@ -32,13 +32,19 @@ class Funcionario:
         -------------------------------------
               BIBLIOTECA     FUNCIONARIO       
         ------------------------------------- 
-        1- Controlar Novo Emprestimo
+        1- Novo Emprestimo
 
-        2- Controlar Devolucao Emprestimo 
+        2- Listar Emprestimo
+        
+        3- Devolucao Emprestimo 
 
-        3- Listar Usuarios
+        4- Listar Usuarios
+        
+        5- Cadastrar Novo Usuario
+         
+        6- Listar Professores
 
-        4- Cadastrar Novo Professor 
+        7- Cadastrar Novo Professor 
 
         0- Sair
         _____________________________________
@@ -68,8 +74,23 @@ class Funcionario:
               for l in listamprestimos:
                   listamprestimos.append((Emprestimo(id=lis.getId()+1000, idLivro=lis.getId(),idUsuario=idusuario,datainit=datetime, datadev=datadevo, devolvido='n',reservado='s', encerrado='n')))
                   print("Livro Reservado")
-
+     
       if opcao == '2':
+              for listamprestimo in listamprestimos:
+                for lis in listalivros:
+                  if lis.getId() == listamprestimo.getId() and listamprestimo.getDevolvido() == 'n':
+                    print("\tLista de Livros Emprestados")
+
+                    print("\tTitulo:  ",lis.getTitulo())
+                    print("\tN° Isbn: ",lis.getIsbn())
+                    print("\tAutor: ",  lis.getAutor())
+                    print("\tEditora: ",lis.getEditora())
+                    print("\tAno:     ",lis.getAno())
+                    for ass in listacategorias:
+                      if ass.getId() == lis.getAssunto():
+                        print("\tAssunto: ",ass.getNome())
+      
+      if opcao == '3':
         
         id = input("id da Reserva do Livro")
         for lis in listamprestimos:
@@ -79,13 +100,13 @@ class Funcionario:
               print("Devolucao Feita")
               break
         
-      if opcao == '3':
+      if opcao == '4':
         for lis in listausuarios:
           print("\t Nome:  ",lis.getNome())
           print("\tN° Matricula: ",lis.getMatricula())
           print('-------------------------------')
 
-      if opcao == '4':
+      if opcao == '5':
           id = input("digite um id ")
           nome = input("digite um Nome ")
           matricula = input("digite uma Matricula ")
@@ -93,13 +114,13 @@ class Funcionario:
           listausuarios.append((Usuario(id=id, nome=nome, matricula=matricula)))
           print("Cadastro Realizado")
 
-      if opcao == '5': 
+      if opcao == '6': 
         for lis in listaprofessores:
           print("\t Nome:  ",lis.getNome())
           print("\tN° Matricula: ",lis.getMatricula())
           print('-------------------------------')
 
-      if opcao == '6':
+      if opcao == '7':
           id = input("digite um id ")
           nome = input("digite um Nome ")
           matricula = input("digite uma Matricula ")
