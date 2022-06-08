@@ -13,12 +13,12 @@ class LivrosDao:
           Livros(id=5, titulo="Vade Mecum", isbn="1478", autor="erik", editora="Imperios", ano="2012", assunto=2, status=1),
           Livros(id=6, titulo="Avatar", isbn="3434", autor="Huam", editora="Movida", ano="2022", assunto=3, status=1),
           Livros(id=7, titulo="pilatos", isbn="3434", autor="Aroldo", editora="Movida", ano="2022", assunto=1, status=1),
-          Livros(id=8, titulo="Grilo", isbn="3485", autor="Ana", editora="Movida", ano="2000", assunto=4, status=1),
+          Livros(id=8, titulo="Grilo", isbn="3485", autor="Ana", editora="Movida", ano="2000", assunto=4, status=0),
           Livros(id=9, titulo="Matto selvagem", isbn="4534", autor="pires", editora="Movida", ano="1946", assunto=4, status=0),
           Livros(id=10, titulo="Avatar", isbn="9878", autor="marcos", editora="Movida", ano="2016", assunto=7, status=1),
           Livros(id=11, titulo="joao e pe feijao", isbn="3434", autor="irinei", editora="humo", ano="2022", assunto=3, status=0),
           Livros(id=12, titulo="halo", isbn="4354", autor="jonas", editora="novatec", ano="2014", assunto=5, status=1),
-          Livros(id=13, titulo="guerra", isbn="8678", autor="Huam", editora="seleniun", ano="2015", assunto=1, status=1),
+          Livros(id=13, titulo="Guerra", isbn="8678", autor="Huam", editora="seleniun", ano="2015", assunto=1, status=1),
 
         ]
 
