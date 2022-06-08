@@ -64,26 +64,24 @@ class Funcionario:
                 if lis.getId() == listaemprestimo.getId() and listaemprestimo.getDevolvido == 'n':
                   print("\t Livro Indisponivel \t ")
                   break 
-              print("\tTitulo:  ",lis.getTitulo())
-              print("\tN° Isbn: ",lis.getIsbn())
-              print("\tAutor: ",  lis.getAutor())
-              print("\tEditora: ",lis.getEditora())
-              print("\tAno:     ",lis.getAno())
-              for ass in listacategorias:
-                if ass.getId() == lis.getAssunto():
-                  print("\tAssunto: ",ass.getNome())
+                print("\tTitulo:  ",lis.getTitulo())
+                print("\tN° Isbn: ",lis.getIsbn())
+                print("\tAutor: ",  lis.getAutor())
+                print("\tEditora: ",lis.getEditora())
+                print("\tAno:     ",lis.getAno())
+                for ass in listacategorias:
+                  if ass.getId() == lis.getAssunto():
+                    print("\tAssunto: ",ass.getNome())
                   
-              lis.setStatus(1)
+              #lis.setStatus(1)
               ide = int(input("\t Digite id  \t"))
               idliv = int(input("\t Digite id do livro \t"))
               idusuario = int(input("\t Digite seu id de usuario \t"))
               datadevo = input("\t Digite a data de devolucao 00/00/0000 \t")
-              #for l in listaemprestimos:
-              #listaemprestimos.append(Emprestimo(id=ids, idLivro=lis.getId(),idUsuario=idusuario,datainit=dat, datadev=datadevo, devolvido='n',reservado='s', encerrado='n'))
-              #listaemprestimos.append((Emprestimo(id=5, idLivro=6, idUsuario=2, datainit='17/03/2022', datadev='25/07/2022', devolvido='n', reservado='s',encerrado='n')))
-              listaemprestimos.append(Emprestimo(id=4, idLivro=6, idUsuario=2, datainit='17/03/2022', datadev='25/07/2022', devolvido='n', reservado='s',encerrado='n'),)
-              listaemprestimos.append(Emprestimo(id=11, idLivro=idliv, idUsuario=idusuario, datainit='17/03/2022', datadev='25/07/2022', devolvido='n', reservado='s',encerrado='n'))
-
+              #
+              x = datetime.datetime.now()
+              listaemprestimos.append((Emprestimo(id=22, idLivro=lis.getId(),idUsuario=idusuario,datainit=x.year, datadev=datadevo, devolvido='n',reservado='s', encerrado='n')))
+              
               print("\t ------------------------------")
               print("\t\t Livro Reservado")
               print("\t ------------------------------")
